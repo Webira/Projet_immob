@@ -3,6 +3,6 @@ home:
   controller: App\Controller\HomeController::index
 
 
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+property.index:
+  path: /biens
+  controller: App\Controller\DefaultController::index
