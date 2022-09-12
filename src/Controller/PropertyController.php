@@ -22,11 +22,11 @@ class PropertyController extends AbstractController
      * @Route("/biens", name="property.biens")
      * @return Response
      */  
-     // pour recuperermon bien de bdd utiliser Repository:         
+     // pour recuperer mon bien de bdd utiliser Repository:         
              //version 2
     public function index(): Response
     {
-        $property=$this->repository->find(1);
+        $property=$this->repository->findAllVisible();
      
              //version 1
     /*public function index(): Response

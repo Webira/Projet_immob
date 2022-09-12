@@ -21,6 +21,30 @@ class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
+    public function findAllVisible(): array
+    {
+       return $this->findVisibleQuery()
+       ->getQuery()
+       ->getResult()
+       ;
+    }
+
+    public function findLatest(): array
+    {
+       return $this->findVisibleQuery()
+       ->setMaxResults(4)
+       ->getQuery()
+       ->getResult()
+       ;
+    }
+    private function findVisibleQuery(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+         ->where('p.sold=false');
+    }
+
+
+
     public function add(Property $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
